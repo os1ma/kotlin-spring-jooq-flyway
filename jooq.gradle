@@ -43,16 +43,25 @@ jooq {
                 includes = '.*'
                 excludes = ''
             }
+            // TODO ./gradlew clean でクリーンアップ
             target {
                 packageName = 'com.example.demo.infrastructure.jooq.generated'
                 directory = 'src/main/java'
             }
-            /*
+            generate {
+                daos = true
+                immutablePojos = true
+                pojosEqualsAndHashCode = true
+            }
             strategy {
                 name = null
                 matchers {
                     tables {
                         table {
+                            tableClass {
+                                transform = 'PASCAL'
+                                expression = '\$0_TABLE'
+                            }
                             pojoClass {
                                 transform = 'PASCAL'
                                 expression = '\$0_ENTITY'
@@ -61,15 +70,6 @@ jooq {
                     }
                 }
             }
-            */
-            // TODO generate のオプションの確認
-            /*
-            generate {
-                daos = true
-                immutablePojos = true
-                pojosEqualsAndHashCode = true
-            }
-            */
         }
     }
 }

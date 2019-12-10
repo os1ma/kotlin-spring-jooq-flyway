@@ -4,15 +4,15 @@ import com.example.demo.domain.model.task.Task
 import com.example.demo.domain.model.task.TaskId
 import com.example.demo.domain.model.task.TaskName
 import com.example.demo.domain.model.task.TaskRepository
-import com.example.demo.infrastructure.jooq.generated.demo.tables.Tasks
-import com.example.demo.infrastructure.jooq.generated.demo.tables.records.TasksRecord
+import com.example.demo.infrastructure.jooq.generated.demo.tables.TasksTable
+import com.example.demo.infrastructure.jooq.generated.demo.tables.pojos.TasksEntity
 import org.jooq.DSLContext
 import org.springframework.stereotype.Repository
 
 @Repository
 class TaskMySQLRepository(val dsl: DSLContext) : TaskRepository {
 
-    val taskTable: Tasks = Tasks.TASKS
+    private val taskTable: TasksTable = TasksTable.TASKS
 
     // TODO fetch した数が 1 つでない場合に対応
     override fun findById(id: TaskId): Task {
@@ -21,13 +21,9 @@ class TaskMySQLRepository(val dsl: DSLContext) : TaskRepository {
                 taskTable.NAME)
                 .from(taskTable)
                 .where(taskTable.ID.eq(id.value))
-                .fetchInto(TasksRecord::class.java)
+                .fetchInto(TasksEntity::class.java)
 
-        return tasks.map { r ->
-            Task(
-                    TaskId(r.id),
-                    TaskName(r.name))
-        }
+        return tasks.map { r -> Task(TaskId(r.id), TaskName(r.name)) }
                 .first()
     }
 
