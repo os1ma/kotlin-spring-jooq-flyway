@@ -1,18 +1,25 @@
 package com.example.demo.application.service.task
 
-import com.example.demo.domain.model.task.Task
-import com.example.demo.domain.model.task.TaskId
-import com.example.demo.domain.model.task.TaskRepository
+import com.example.demo.domain.model.task.*
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
+// TODO Transaction の設定とテスト
 @Service
 @Transactional
 class TaskApplicationService(
-        val taskRepository: TaskRepository) {
+        private val taskRepository: TaskRepository) {
 
-    fun get(id: TaskId): Task {
+    fun list(): Tasks {
+        return taskRepository.findAll()
+    }
+
+    fun get(id: TaskId): Task? {
         return taskRepository.findById(id)
+    }
+
+    fun register(name: TaskName) {
+        taskRepository.add(name)
     }
 
 }
