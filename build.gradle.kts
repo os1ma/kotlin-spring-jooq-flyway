@@ -55,3 +55,5 @@ tasks.withType<KotlinCompile> {
 		jvmTarget = "1.8"
 	}
 }
+
+apply(from = "jooq.gradle")
