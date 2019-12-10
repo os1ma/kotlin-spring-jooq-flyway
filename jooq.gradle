@@ -45,9 +45,31 @@ jooq {
             }
             target {
                 packageName = 'com.example.demo.infrastructure.jooq.generated'
+                directory = 'src/main/java'
             }
-            // TODO generate 時に prefix を設定
+            /*
+            strategy {
+                name = null
+                matchers {
+                    tables {
+                        table {
+                            pojoClass {
+                                transform = 'PASCAL'
+                                expression = '\$0_ENTITY'
+                            }
+                        }
+                    }
+                }
+            }
+            */
             // TODO generate のオプションの確認
+            /*
+            generate {
+                daos = true
+                immutablePojos = true
+                pojosEqualsAndHashCode = true
+            }
+            */
         }
     }
 }

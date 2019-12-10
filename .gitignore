@@ -30,3 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### JOOQ ###
+/src/main/java/com/example/demo/infrastructure/jooq/generated/
