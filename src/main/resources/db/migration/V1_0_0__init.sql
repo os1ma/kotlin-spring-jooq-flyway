@@ -1,5 +1,23 @@
-CREATE TABLE `tasks` (
+CREATE TABLE `users` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
+
+CREATE TABLE `tasks` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `asignee_user_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+INSERT INTO `users` (`id`, `name`) VALUES
+(1, 'Alice'),
+(2, 'Bob')
+;
+
+INSERT INTO `tasks` (`name`, `asignee_user_id`) VALUES
+('Task1', 1),
+('Task2', 2),
+('Task3', 2)
+;
