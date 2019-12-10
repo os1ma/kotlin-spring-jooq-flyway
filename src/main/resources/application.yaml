@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: demo
+
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:demo}/${MYSQL_DATABASE:demo}?useSSL=false
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework: WARN
+    com:
+      example: ${LOG_LEVEL:INFO}
