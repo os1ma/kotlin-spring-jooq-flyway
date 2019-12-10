@@ -4,7 +4,6 @@ import com.example.demo.domain.model.task.*
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
-// TODO Transaction の設定とテスト
 @Service
 @Transactional
 class TaskApplicationService(

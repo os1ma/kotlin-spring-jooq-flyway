@@ -4,8 +4,7 @@ import com.example.demo.domain.model.task.Task
 
 data class TaskGetResponseBody(
         val id: Int,
-        val name: String
-) {
+        val name: String) {
 
     companion object {
         fun from(task: Task): TaskGetResponseBody {
