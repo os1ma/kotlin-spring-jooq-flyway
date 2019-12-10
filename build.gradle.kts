@@ -16,9 +16,6 @@ configurations {
 	runtimeClasspath {
 		extendsFrom(developmentOnly)
 	}
-	compileOnly {
-		extendsFrom(configurations.annotationProcessor.get())
-	}
 }
 
 repositories {
@@ -26,16 +23,23 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-jooq")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.flywaydb:flyway-core")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	// Kotlin
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	compileOnly("org.projectlombok:lombok")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+	// Web
+	implementation("org.springframework.boot:spring-boot-starter-jooq")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+	// Database
 	runtimeOnly("mysql:mysql-connector-java")
-	annotationProcessor("org.projectlombok:lombok")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.flywaydb:flyway-core")
+
+	// Development
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
