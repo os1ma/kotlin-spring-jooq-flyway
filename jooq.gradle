@@ -2,11 +2,13 @@
 
 // TODO JOOQ のバージョンを確認
 def jooqVersion = '3.11.11'
+// TODO Flyway のバージョンを確認
 
-// TODO 接続先を設定から取得
-def jdbcUrl = 'jdbc:mysql://localhost/demo?useSSL=false'
-def dbUser = 'demo'
-def dbPassword = 'password'
+def dbHost = "${System.getenv()['MYSQL_HOST']}"
+def dbSchema = "${System.getenv()['MYSQL_DATABASE']}"
+def dbUser = "${System.getenv()['MYSQL_USER']}"
+def dbPassword = "${System.getenv()['MYSQL_PASSWORD']}"
+def dbUrl = "jdbc:mysql://${dbHost}/${dbSchema}?useSSL=false"
 
 def jooqTargetDirectory = 'src/main/java'
 def jooqTargetPackageName = 'com.example.demo.infrastructure.jooq.generated'
@@ -42,7 +44,7 @@ jooq {
     tables(sourceSets.main) {
         jdbc {
             driver = 'com.mysql.jdbc.Driver'
-            url = jdbcUrl
+            url = dbUrl
             user = dbUser
             password = dbPassword
         }
