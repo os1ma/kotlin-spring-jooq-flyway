@@ -1,4 +1,8 @@
 // TODO Kotlin DSL に修正
+
+def jooqTargetDirectory = 'src/main/java'
+def jooqTargetPackageName = 'com.example.demo.infrastructure.jooq.generated'
+
 buildscript {
     repositories {
         maven {
@@ -43,10 +47,9 @@ jooq {
                 includes = '.*'
                 excludes = ''
             }
-            // TODO ./gradlew clean でクリーンアップ
             target {
-                packageName = 'com.example.demo.infrastructure.jooq.generated'
-                directory = 'src/main/java'
+                directory = jooqTargetDirectory
+                packageName = jooqTargetPackageName
             }
             strategy {
                 name = null
@@ -63,4 +66,10 @@ jooq {
             }
         }
     }
+}
+
+clean {
+    def cleanUpDirectory = jooqTargetDirectory + jooqTargetPackageName.tr('.', '/')
+    println "Clean up ${cleanUpDirectory} ..."
+    delete cleanUpDirectory
 }

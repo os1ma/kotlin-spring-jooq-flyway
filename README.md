@@ -5,14 +5,17 @@ Sample project with Kotlin, Spring Boot, JOOQ, Flyway, etc ...
 ## JOOQ によるコードの生成
 
 ```bash
-$ ./gradlew generateTablesJooqSchemaSource
+$ ./gradlew clean generateTablesJooqSchemaSource
 ```
 
 ## TODO
 
 ### Flyway
-* Flyway によるマイグレーションを起動時に実行しないか並列実行の制御
-* Flyway によるマイグレーションをデプロイ時に実行
+* Flyway によるマイグレーションの実行タイミングの調整
+
+参考
+* Flyway の並列実行の制御について
+  * https://flywaydb.org/documentation/faq.html#parallel
 
 ### JOOQ
 * ローカル開発時の JOOQ のコード生成の自動化
