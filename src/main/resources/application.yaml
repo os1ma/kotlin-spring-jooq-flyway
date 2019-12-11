@@ -7,6 +7,10 @@ spring:
     username: ${MYSQL_USER}
     password: ${MYSQL_PASSWORD}
 
+    # DB のフェールオーバなどの際にエラーが発生しないよう、コネクションプールを使わないための設定
+    # see https://www.techscore.com/blog/2019/09/19/%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AF%E5%AE%9F%E9%9A%9B%E5%BF%85%E8%A6%81%E3%81%AA%E3%81%AE%E3%81%8B%EF%BC%88postgresql%EF%BC%89/
+    type: org.springframework.jdbc.datasource.DriverManagerDataSource
+
 logging:
   level:
     root: INFO
