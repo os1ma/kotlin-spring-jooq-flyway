@@ -1,4 +1,4 @@
-package com.example.demo.interfaces.api
+package com.example.demo.interfaces.api.task
 
 import com.example.demo.application.service.task.TaskApplicationService
 import com.example.demo.domain.model.task.TaskId
