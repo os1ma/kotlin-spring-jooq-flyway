@@ -1,5 +1,13 @@
 // TODO Kotlin DSL に修正
 
+// TODO JOOQ のバージョンを確認
+def jooqVersion = '3.11.11'
+
+// TODO 接続先を設定から取得
+def jdbcUrl = 'jdbc:mysql://localhost/demo?useSSL=false'
+def dbUser = 'demo'
+def dbPassword = 'password'
+
 def jooqTargetDirectory = 'src/main/java'
 def jooqTargetPackageName = 'com.example.demo.infrastructure.jooq.generated'
 
@@ -29,16 +37,14 @@ dependencies {
 // see https://qiita.com/nabedge/items/89fae15068e7a317a668
 // see https://github.com/nabedge/jooq-flyway-spboot-sample/blob/master/pj-db/build.gradle
 jooq {
-    // TODO JOOQ のバージョンを確認
-    version = '3.11.11'
+    version = jooqVersion
     edition = 'OSS'
     tables(sourceSets.main) {
         jdbc {
             driver = 'com.mysql.jdbc.Driver'
-            // TODO 接続先を設定から取得
-            url = 'jdbc:mysql://localhost/demo?useSSL=false'
-            user = 'demo'
-            password = 'password'
+            url = jdbcUrl
+            user = dbUser
+            password = dbPassword
         }
         generator {
             name = 'org.jooq.codegen.DefaultGenerator'
