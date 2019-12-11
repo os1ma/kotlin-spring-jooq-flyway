@@ -17,8 +17,4 @@ export MYSQL_DATABASE=demo
 export MYSQL_USER=demo
 export MYSQL_PASSWORD=password
 
-./gradlew \
-  clean \
-  flywayMigrate \
-  generateTablesJooqSchemaSource \
-  build
+./gradlew flywayMigrate
