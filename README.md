@@ -22,6 +22,7 @@ $ ./gradlew generateTablesJooqSchemaSource
 * 起動時に JOOQ を初期化
 * コネクションプールを使わない
 * データアクセスの自動テスト
+* Deep Health Check 実装
 
 ### Swagger
 * Spring Fox で Swagger の生成

@@ -18,9 +18,9 @@ class TaskMySQLRepository(private val ctx: DSLContext) : TaskRepository {
 
     // private vals
 
-    private val t: TASKS_TABLE = TASKS_TABLE.TASKS.`as`("t")
-    private val u: USERS_TABLE = USERS_TABLE.USERS.`as`("u")
-    private val r: REVIEWERS_TABLE = REVIEWERS_TABLE.REVIEWERS.`as`("r")
+    private val t = TASKS_TABLE.TASKS.`as`("t")
+    private val u = USERS_TABLE.USERS.`as`("u")
+    private val r = REVIEWERS_TABLE.REVIEWERS.`as`("r")
     private val ru = u.`as`("ru")
 
     // public funs

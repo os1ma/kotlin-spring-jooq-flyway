@@ -22,7 +22,9 @@ data class TaskName(val value: String)
 
 // first class collections
 data class Tasks(val list: List<Task>) {
+
     fun firstOrNull(): Task? {
         return list.firstOrNull()
     }
+
 }
