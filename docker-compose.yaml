@@ -15,10 +15,10 @@ services:
     working_dir: /work
 
     command: >
-      ./gradlew \
-        clean \
-        flywayMigrate \
-        generateTablesJooqSchemaSource \
+      ./gradlew
+        clean
+        flywayMigrate
+        generateTablesJooqSchemaSource
         bootRun
 
     #-Dspring-boot.run.profiles=local
