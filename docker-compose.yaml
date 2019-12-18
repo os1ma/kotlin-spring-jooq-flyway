@@ -19,7 +19,7 @@ services:
         clean
         flywayMigrate
         generateTablesJooqSchemaSource
-        bootRun
+        ${GRADLE_COMMAND:-bootRun}
 
     #-Dspring-boot.run.profiles=local
     #-Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
