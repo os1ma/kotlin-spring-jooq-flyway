@@ -2,6 +2,7 @@ package com.example.demo.interfaces.api.task
 
 import com.example.demo.application.service.task.TaskApplicationService
 import com.example.demo.domain.model.task.TaskId
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -11,10 +12,9 @@ class TaskController(
         private val service: TaskApplicationService) {
 
     @GetMapping()
-    fun list(): ResponseEntity<TaskListResponseBody> {
+    fun list(): TaskListResponseBody {
         val tasks = service.list()
-        val body = TaskListResponseBody.from(tasks)
-        return ResponseEntity.ok(body)
+        return TaskListResponseBody.from(tasks)
     }
 
     @GetMapping("/{taskId}")
@@ -25,6 +25,7 @@ class TaskController(
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     fun post(@RequestBody body: TaskPostRequestBody) {
         service.register(
                 body.taskName(),

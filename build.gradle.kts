@@ -36,6 +36,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-jooq")
 	implementation("org.flywaydb:flyway-core")
 
+	// Document
+	implementation("io.springfox:springfox-swagger2:2.9.2")
+
 	// Development
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 

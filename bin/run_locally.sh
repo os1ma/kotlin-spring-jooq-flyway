@@ -10,6 +10,7 @@ readonly PROJECT_HOME="${SCRIPT_DIR}"/..
 
 cd "${PROJECT_HOME}"
 
+export SPRING_PROFILES_ACTIVE=local
 export LOG_LEVEL=DEBUG
 
 export MYSQL_HOST=localhost
@@ -31,7 +32,7 @@ main() {
         clean \
         flywayMigrate \
         generateTablesJooqSchemaSource \
-        bootRun
+        bootRun \
       ;;
 
     build)

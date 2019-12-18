@@ -13,7 +13,7 @@ $ docker-compose up -d mysql
 $ ./bin/run_locally.sh develop
 ```
 
-ビルドして JAR で起動
+ビルドして JAR を起動
 
 ```bash
 $ docker-compose up -d mysql
@@ -55,6 +55,12 @@ Spring Boot の起動または `./gradlew flywayMigrate` コマンドの実行�
 参考
 * [Can multiple nodes migrate in parallel?](https://flywaydb.org/documentation/faq.html#parallel)
 
+### SpringFox
+
+Profile local で起動すると以下のエンドポイントに Swagger の JSON が生成される。
+
+http://localhost:8080/v2/api-docs
+
 ## TODO
 
 ### JOOQ
@@ -63,7 +69,6 @@ Spring Boot の起動または `./gradlew flywayMigrate` コマンドの実行�
   * https://simpleflatmapper.org/
 
 ### Swagger
-* Spring Fox で Swagger の生成
 * API の自動テスト
 
 ### CI
