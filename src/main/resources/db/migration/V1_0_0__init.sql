@@ -24,10 +24,10 @@ INSERT INTO `users` (`id`, `name`) VALUES
 (3, 'Charlie')
 ;
 
-INSERT INTO `tasks` (`name`, `assignee_user_id`) VALUES
-('Task1', 1),
-('Task2', 2),
-('Task3', 2)
+INSERT INTO `tasks` (`id`, `name`, `assignee_user_id`) VALUES
+(1, 'Task1', 1),
+(2, 'Task2', 2),
+(3, 'Task3', 2)
 ;
 
 INSERT INTO `reviewers` (`task_id`, `user_id`) VALUES

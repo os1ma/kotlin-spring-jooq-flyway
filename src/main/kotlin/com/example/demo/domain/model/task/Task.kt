@@ -27,4 +27,20 @@ data class Tasks(val list: List<Task>) {
         return list.firstOrNull()
     }
 
+    operator fun get(index: Int): Task {
+        return list[index]
+    }
+
+    fun size(): Int {
+        return list.size
+    }
+
+    companion object {
+
+        fun of(vararg tasks: Task): Tasks {
+            return Tasks(tasks.asList())
+        }
+
+    }
+
 }

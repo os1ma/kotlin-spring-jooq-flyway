@@ -9,4 +9,12 @@ data class UserId(val value: Int)
 data class UserName(val value: String)
 
 // first class collections
-data class UserNames(val list: List<UserName>)
+data class UserNames(val list: List<UserName>) {
+
+    companion object {
+        fun ofEmpty(): UserNames {
+            return UserNames(emptyList())
+        }
+    }
+
+}

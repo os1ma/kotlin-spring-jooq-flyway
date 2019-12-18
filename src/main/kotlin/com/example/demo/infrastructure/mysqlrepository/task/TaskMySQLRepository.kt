@@ -1,6 +1,7 @@
 package com.example.demo.infrastructure.mysqlrepository.task
 
 import com.example.demo.domain.model.task.*
+import com.example.demo.domain.model.user.UserId
 import com.example.demo.domain.model.user.UserName
 import com.example.demo.domain.model.user.UserNames
 import com.example.demo.infrastructure.jooq.generated.demo.tables.REVIEWERS_TABLE
@@ -41,15 +42,28 @@ class TaskMySQLRepository(private val ctx: DSLContext) : TaskRepository {
                 .firstOrNull()
     }
 
-    // FIXME fix to save assignee
-    override fun add(name: TaskName): TaskId {
+    override fun size(): Int {
+        return ctx.selectCount()
+                .from(t)
+                .fetchOne(0, Int::class.java)
+
+    }
+
+    override fun add(name: TaskName, assigneeUserId: UserId): TaskId {
         val record = ctx.newRecord(t)
 
         record.name = name.value
+        record.assigneeUserId = assigneeUserId.value
 
         record.store()
 
         return TaskId(record.id)
+    }
+
+    override fun remove(id: TaskId) {
+        ctx.delete(t)
+                .where(t.ID.eq(id.value))
+                .execute()
     }
 
     // private funs
@@ -72,14 +86,16 @@ class TaskMySQLRepository(private val ctx: DSLContext) : TaskRepository {
     }
 
     private fun record2model(entry: RecordMapEntryType): Task {
+        val row = entry.value.first()
+
         val userNameList = entry.value
                 .filter { v -> v[ru.NAME] != null }
                 .map { v -> UserName(v[ru.NAME]) }
 
         return Task(
-                TaskId(entry.key[t.ID]),
-                TaskName(entry.key[t.NAME]),
-                UserName(entry.key[u.NAME]),
+                TaskId(row[t.ID]),
+                TaskName(row[t.NAME]),
+                UserName(row[u.NAME]),
                 UserNames(userNameList))
     }
 

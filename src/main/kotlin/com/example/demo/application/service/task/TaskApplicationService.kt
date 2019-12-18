@@ -1,6 +1,7 @@
 package com.example.demo.application.service.task
 
 import com.example.demo.domain.model.task.*
+import com.example.demo.domain.model.user.UserId
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -17,8 +18,8 @@ class TaskApplicationService(
         return taskRepository.findById(id)
     }
 
-    fun register(name: TaskName) {
-        taskRepository.add(name)
+    fun register(name: TaskName, assigneeUserId: UserId) {
+        taskRepository.add(name, assigneeUserId)
     }
 
 }

@@ -26,7 +26,9 @@ class TaskController(
 
     @PostMapping
     fun post(@RequestBody body: TaskPostRequestBody) {
-        service.register(body.taskName())
+        service.register(
+                body.taskName(),
+                body.assigneeUserId())
     }
 
 }
