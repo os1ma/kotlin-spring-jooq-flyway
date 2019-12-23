@@ -13,7 +13,7 @@ Sample project with Kotlin, Spring Boot, JOOQ, Flyway, etc ...
 * Docker
 * Docker Compose
 
-### ローカルの Java と MySQL のコンテナを使う場合
+### ローカルの Java とコンテナ上の MySQL で開発する場合
 
 開発
 
@@ -30,7 +30,7 @@ $ ./bin/run_locally.sh build
 $ ./bin/run_locally.sh jar
 ```
 
-### コンテナ上の Java を使う場合
+### コンテナ上の Java と MySQL で開発する場合
 
 開発
 
@@ -79,3 +79,6 @@ http://localhost:8080/v2/api-docs
 
 ### Swagger
 * API の自動テスト
+
+### OWASP Dependency Check
+* 依存関係の脆弱性診断と修正
