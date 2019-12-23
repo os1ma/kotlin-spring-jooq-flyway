@@ -86,7 +86,7 @@ jooq {
 
 // TODO clean up が常に実行されないように修正
 clean {
-    def cleanUpDirectory = jooqTargetDirectory + jooqTargetPackageName.tr('.', '/')
+    def cleanUpDirectory = jooqTargetDirectory + '/' + jooqTargetPackageName.tr('.', '/')
     println "Clean up ${cleanUpDirectory} ..."
     delete cleanUpDirectory
 }
