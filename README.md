@@ -1,10 +1,19 @@
 # kotlin-spring-jooq-flyway
 
+[![CircleCI](https://circleci.com/gh/os1ma/kotlin-spring-jooq-flyway.svg?style=svg)](https://circleci.com/gh/os1ma/kotlin-spring-jooq-flyway)
+
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
 Sample project with Kotlin, Spring Boot, JOOQ, Flyway, etc ...
 
 ## 開発手順
 
-### ローカルの Java を使う場合
+### 依存ツール
+* Java 8
+* Docker
+* Docker Compose
+
+### ローカルの Java と MySQL のコンテナを使う場合
 
 開発
 
@@ -21,7 +30,7 @@ $ ./bin/run_locally.sh build
 $ ./bin/run_locally.sh jar
 ```
 
-### Docker 上の Java を使う場合
+### コンテナ上の Java を使う場合
 
 開発
 
@@ -32,7 +41,7 @@ $ docker-compose up -d
 ビルド
 
 ```bash
-$ GRADLE_COMMAND=build docker-compose up
+$ ./bin/build_on_docker.sh
 ```
 
 ## API 利用例
@@ -70,6 +79,3 @@ http://localhost:8080/v2/api-docs
 
 ### Swagger
 * API の自動テスト
-
-### CI
-* CI でテスト用のコンテナを起動・接続
