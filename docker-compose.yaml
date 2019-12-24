@@ -14,14 +14,7 @@ services:
       - ~/.gradle:/root/.gradle
     working_dir: /work
 
-    command: >
-      ./gradlew
-        clean
-        flywayMigrate
-        generateTablesJooqSchemaSource
-        ${GRADLE_COMMAND:-bootRun}
-
-    #-Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
+    command: ./bin/run_locally.sh ${SUB_COMMAND:-develop}
 
     environment:
       JAVA_HOME: /usr/lib/jvm/java

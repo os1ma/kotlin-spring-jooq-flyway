@@ -80,5 +80,5 @@ http://localhost:8080/v2/api-docs
 ### Swagger
 * API の自動テスト
 
-### OWASP Dependency Check
-* 依存関係の脆弱性診断と修正
+### Test
+* 開発環境が起動できることのテスト

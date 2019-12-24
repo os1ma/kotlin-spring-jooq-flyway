@@ -79,7 +79,7 @@ main() {
   docker-compose up -d "${DB_SERVICE}"
   wait_for_mysql_container_starting
 
-  GRADLE_COMMAND=build docker-compose up "${APP_SERVICE}"
+  SUB_COMMAND=build docker-compose up "${APP_SERVICE}"
   local exit_code="$(get_app_container_exit_code)"
 
   docker-compose down
