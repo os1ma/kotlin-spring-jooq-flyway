@@ -8,7 +8,7 @@ Sample project with Kotlin, Spring Boot, JOOQ, Flyway, etc ...
 
 ## 開発手順
 
-### 依存ツール
+### 依存関係
 * Java 8
 * Docker
 * Docker Compose
@@ -44,7 +44,7 @@ $ docker-compose up -d
 $ ./bin/build_on_docker.sh
 ```
 
-## API 利用例
+## API 実行例
 
 ```bash
 $ curl http://localhost:8080/health
@@ -70,6 +70,12 @@ Profile local で起動すると以下のエンドポイントに Swagger の JS
 
 http://localhost:8080/v2/api-docs
 
+### OWASP Dependency Check
+
+ビルド時に依存ライブラリの脆弱性診断が実行される。
+
+CVSS 7.0 以上の脆弱性が発見された場合、ビルドが失敗するよう設定済み。
+
 ## TODO
 
 ### JOOQ
@@ -77,8 +83,7 @@ http://localhost:8080/v2/api-docs
   * https://stackoverflow.com/questions/33845239/jooq-single-query-with-one-to-many-relationship
   * https://simpleflatmapper.org/
 
-### Swagger
+### CI
 * API の自動テスト
-
-### Test
 * 開発環境が起動できることのテスト
+* ビルド成果物を CircleCI の artifact にアップロード
