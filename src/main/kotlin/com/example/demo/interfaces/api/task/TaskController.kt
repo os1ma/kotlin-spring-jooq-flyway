@@ -32,4 +32,10 @@ class TaskController(
                 body.assigneeUserId())
     }
 
+    @DeleteMapping("/{taskId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete(@PathVariable taskId: Int) {
+        service.remove(TaskId(taskId))
+    }
+
 }

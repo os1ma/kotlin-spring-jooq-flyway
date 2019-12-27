@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  tavern:
+    build: .
+    volumes:
+      - ${PWD}:/work
+    working_dir: /work
+    networks:
+      - default
+      - kotlin-spring-jooq-flyway_default
+
+networks:
+  kotlin-spring-jooq-flyway_default:
+    external: true

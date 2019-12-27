@@ -1,0 +1,92 @@
+---
+test_name: Test Task API
+
+includes:
+  - !include ../includes.yaml
+
+stages:
+  - name: list
+    request:
+      url: "{baseUrl}/tasks"
+      method: GET
+    response:
+      status_code: 200
+      body:
+        tasks:
+        - id: 1
+          name: Task1
+          assignee: Alice
+          reviewers:
+          - Bob
+          - Charlie
+        - id: 2
+          name: Task2
+          assignee: Bob
+          reviewers:
+          - Charlie
+        - id: 3
+          name: Task3
+          assignee: Bob
+          reviewers: []
+
+  - name: get
+    request:
+      url: "{baseUrl}/tasks/1"
+      method: GET
+    response:
+      status_code: 200
+      body:
+        id: 1
+        name: Task1
+        assignee: Alice
+        reviewers:
+        - Bob
+        - Charlie
+
+  - name: post
+    request:
+      url: "{baseUrl}/tasks"
+      method: POST
+      json:
+        name: NewTask
+        assigneeUserId: 1
+    response:
+      status_code: 201
+
+  - name: post_check
+    request:
+      url: "{baseUrl}/tasks"
+      method: GET
+    response:
+      status_code: 200
+      body:
+        tasks:
+        - id: 1
+          name: Task1
+          assignee: Alice
+          reviewers:
+          - Bob
+          - Charlie
+        - id: 2
+          name: Task2
+          assignee: Bob
+          reviewers:
+          - Charlie
+        - id: 3
+          name: Task3
+          assignee: Bob
+          reviewers: []
+        - id: !anyint
+          name: NewTask
+          assignee: Alice
+          reviewers: []
+      save:
+        body:
+          postTaskId: tasks[3].id
+
+  - name: delete
+    request:
+      url: "{baseUrl}/tasks/{postTaskId}"
+      method: DELETE
+    response:
+      status_code: 204

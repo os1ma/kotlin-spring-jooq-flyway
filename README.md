@@ -74,7 +74,11 @@ http://localhost:8080/v2/api-docs
 
 ビルド時に依存ライブラリの脆弱性診断が実行される。
 
-CVSS 7.0 以上の脆弱性が発見された場合、ビルドが失敗するよう設定済み。
+CVSS 7.0 以上の脆弱性が発見された場合にビルドが失敗するよう設定済み。
+
+### Tevern
+
+API の自動テストツール
 
 ## TODO
 
@@ -84,6 +88,8 @@ CVSS 7.0 以上の脆弱性が発見された場合、ビルドが失敗する�
   * https://simpleflatmapper.org/
 
 ### CI
-* API の自動テスト
 * 開発環境が起動できることのテスト
 * ビルド成果物を CircleCI の artifact にアップロード
+
+### Document
+* SpringFox で Swagger の UI を起動

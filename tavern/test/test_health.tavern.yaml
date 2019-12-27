@@ -1,0 +1,13 @@
+---
+test_name: Test Health API
+
+includes:
+  - !include ../includes.yaml
+
+stages:
+  - name: get
+    request:
+      url: "{baseUrl}/health"
+      method: GET
+    response:
+      status_code: 200

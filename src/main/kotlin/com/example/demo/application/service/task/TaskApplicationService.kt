@@ -22,4 +22,8 @@ class TaskApplicationService(
         taskRepository.add(name, assigneeUserId)
     }
 
+    fun remove(id: TaskId) {
+        taskRepository.remove(id)
+    }
+
 }
