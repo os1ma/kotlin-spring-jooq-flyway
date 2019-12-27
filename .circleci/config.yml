@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     machine: true
-    working_directory: ~/repo
+    working_directory: ~/kotlin-spring-jooq-flyway
 
     environment:
       JVM_OPTS: -Xmx3200m
