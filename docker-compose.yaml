@@ -35,3 +35,7 @@ services:
       MYSQL_DATABASE: demo
       MYSQL_USER: demo
       MYSQL_PASSWORD: password
+
+networks:
+  default:
+    name: kotlin-spring-jooq-flyway_default
