@@ -22,6 +22,13 @@ $ docker-compose up -d mysql
 $ ./bin/run_locally.sh develop
 ```
 
+Unit テスト
+
+```bash
+$ docker-compose up -d mysql
+$ ./bin/run_locally.sh test
+```
+
 ビルドして JAR を起動
 
 ```bash
@@ -66,9 +73,10 @@ Spring Boot の起動または `./gradlew flywayMigrate` コマンドの実行�
 
 ### SpringFox
 
-Profile local で起動すると以下のエンドポイントに Swagger の JSON が生成される。
+Profile local で起動すると以下のエンドポイントで Swagger のドキュメントが取得可能。
 
-http://localhost:8080/v2/api-docs
+* JSON ファイル ... http://localhost:8080/v2/api-docs
+* Swagger UI ... http://localhost:8080/swagger-ui.html
 
 ### OWASP Dependency Check
 
@@ -90,6 +98,3 @@ API の自動テストツール
 ### CI
 * 開発環境が起動できることのテスト
 * ビルド成果物を CircleCI の artifact にアップロード
-
-### Document
-* SpringFox で Swagger の UI を起動

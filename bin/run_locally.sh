@@ -34,7 +34,7 @@ main() {
         #-Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,ad    dress=5005
       ;;
 
-    # GRADLE_OPTS と --no-daemon は以下の issue の回避のため
+    # GRADLE_OPTS と --no-daemon は OWASP Dependency Check での以下の issue の回避のため
     # https://github.com/jeremylong/DependencyCheck/issues/1742
     build)
       export GRADLE_OPTS="-Dsun.jnu.encoding=UTF-8 -Dfile.encoding=UTF-8" 
@@ -46,6 +46,14 @@ main() {
         flywayMigrate \
         generateTablesJooqSchemaSource \
         build
+      ;;
+
+    test)
+      ./gradlew \
+        clean \
+        flywayMigrate \
+        generateTablesJooqSchemaSource \
+        test
       ;;
 
     jar)
