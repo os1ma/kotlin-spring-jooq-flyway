@@ -130,6 +130,9 @@ main() {
   # JAR ファイルのビルド
   SUB_COMMAND=build docker-compose up "${APP_SERVICE}"
   local build_exit_code="$(get_container_exit_code "${APP_SERVICE}")"
+  if [[ "${build_exit_code}" -ne 0 ]]; then
+    exit "${build_exit_code}"
+  fi
 
   # JAR の起動
   SUB_COMMAND=jar docker-compose up -d "${APP_SERVICE}"
@@ -146,7 +149,7 @@ main() {
   cd "${PROJECT_HOME}"
   docker-compose down
 
-  exit "$((${build_exit_code}+${test_exit_code}))"
+  exit "${test_exit_code}"
 }
 
 main "$@"
