@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <suppress>
+        <notes><![CDATA[
+        see: https://github.com/jeremylong/DependencyCheck/issues/1827
+        see: https://github.com/SAP/cloud-security-xsuaa-integration/pull/173/commits/588353861cad69e59adf146fcecd79f91c764aaa
+        ]]></notes>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+</suppressions>
