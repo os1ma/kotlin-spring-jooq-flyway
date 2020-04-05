@@ -25,3 +25,20 @@ jobs:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}-{{ checksum "jooq.gradle" }}
+
+workflows:
+  version: 2
+  on_commit:
+    jobs:
+      - build
+  cron:
+    jobs:
+      - build
+    triggers:
+      - schedule:
+          # UTC
+          cron: "0 12 * * *"
+          filters:
+            branches:
+              only:
+                - master
