@@ -15,7 +15,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle.kts" }}-{{ checksum "jooq.gradle" }}
+            - v1-dependencies-{{ checksum "build.gradle.kts" }}-{{ checksum "etc/java/jooq-flyway.gradle" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
@@ -24,7 +24,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle.kts" }}-{{ checksum "jooq.gradle" }}
+          key: v1-dependencies-{{ checksum "build.gradle.kts" }}-{{ checksum "etc/java/jooq-flyway.gradle" }}
 
 workflows:
   version: 2
