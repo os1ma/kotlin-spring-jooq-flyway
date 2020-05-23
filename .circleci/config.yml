@@ -19,7 +19,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: ./bin/build_on_docker.sh
+      - run:
+          command: ./bin/build_on_docker.sh
+          no_output_timeout: 30m
 
       - save_cache:
           paths:
