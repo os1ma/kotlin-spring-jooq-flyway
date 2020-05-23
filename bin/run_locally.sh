@@ -41,6 +41,7 @@ main() {
       ./gradlew \
         --no-daemon \
         --stacktrace \
+        --debug \
         clean \
         dependencyCheckAnalyze \
         flywayMigrate \
