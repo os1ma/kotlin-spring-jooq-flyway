@@ -50,6 +50,11 @@ main() {
         build
       ;;
 
+    build-image)
+      ./gradlew \
+      bootBuildImage
+      ;;
+
     test)
       ./gradlew \
         clean \
