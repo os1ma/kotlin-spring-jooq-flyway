@@ -61,8 +61,6 @@ get_container_exit_code() {
   local target_service="$1"
   local container_id="$(docker-compose ps -q "${target_service}")"
 
-  which jq || (echo 'jq not installed.' 1>&2; exit 1)
-
   docker inspect "${container_id}" \
     | jq '.[0].State.ExitCode'
 }
@@ -121,6 +119,8 @@ wait_for_jar_container_starting() {
 
 main() {
   cd "${PROJECT_HOME}"
+
+  which jq || (echo 'jq not installed.' 1>&2; exit 1)
 
   # クリーンアップ
   docker-compose down
