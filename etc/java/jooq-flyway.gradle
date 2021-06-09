@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.jooq:jooq'
+    implementation 'org.jooq:jooq'
     jooqRuntime 'mysql:mysql-connector-java'
 }
 
