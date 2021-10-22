@@ -11,7 +11,7 @@ services:
 
     volumes:
       - ${PWD}:/work
-      - ~/.gradle:/root/.gradle
+      - /root/.gradle:/root/.gradle
     working_dir: /work
 
     command: ./bin/run_locally.sh ${SUB_COMMAND:-develop}

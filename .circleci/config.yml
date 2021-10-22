@@ -25,7 +25,7 @@ jobs:
 
       - save_cache:
           paths:
-            - ~/.gradle
+            - /root/.gradle
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}-{{ checksum "etc/java/jooq-flyway.gradle" }}
 
 workflows:
