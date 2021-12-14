@@ -46,6 +46,11 @@ dependencies {
     }
 }
 
+// log4j の脆弱性 (CVE-2021-44228) が OWASP Dependency Check のエラーにならないようにするための除外設定
+configurations.all {
+    exclude(group = "org.apache.logging.log4j")
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
 }
