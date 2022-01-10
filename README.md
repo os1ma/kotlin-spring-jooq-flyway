@@ -87,14 +87,3 @@ CVSS 7.0 以上の脆弱性が発見された場合にビルドが失敗する�
 ### Tevern
 
 API の自動テストツール
-
-## TODO
-
-### JOOQ
-* 多対一の JOIN に SimpleFlatMapper を使用
-  * https://stackoverflow.com/questions/33845239/jooq-single-query-with-one-to-many-relationship
-  * https://simpleflatmapper.org/
-
-### CI
-* 開発環境が起動できることのテスト
-* ビルド成果物を CircleCI の artifact にアップロード
