@@ -6,30 +6,31 @@
 
 Sample project with Kotlin, Spring Boot, JOOQ, Flyway, etc ...
 
-## 開発手順
+## Dependencies
 
-### 依存関係
-* Java 8
-* Docker
-* Docker Compose
+- Java 8
+- Docker
+- Docker Compose
 
-### ローカルの Java とコンテナ上の MySQL で開発する場合
+## How to run
 
-開発
+### Develop with local JDK and MySQL on container
+
+Develop
 
 ```bash
 $ docker-compose up -d mysql
 $ ./bin/run_locally.sh develop
 ```
 
-Unit テスト
+Unit testing
 
 ```bash
 $ docker-compose up -d mysql
 $ ./bin/run_locally.sh test
 ```
 
-ビルドして JAR を起動
+Build and run JAR
 
 ```bash
 $ docker-compose up -d mysql
@@ -37,21 +38,21 @@ $ ./bin/run_locally.sh build
 $ ./bin/run_locally.sh jar
 ```
 
-### コンテナ上の Java と MySQL で開発する場合
+### Develop with JDK on container and MySQL on container
 
-開発
+Develop
 
 ```bash
 $ docker-compose up -d
 ```
 
-ビルド
+Build
 
 ```bash
 $ ./bin/build_on_docker.sh
 ```
 
-## API 実行例
+## How to call Web API
 
 ```bash
 $ curl http://localhost:8080/health
@@ -60,30 +61,29 @@ $ curl http://localhost:8080/tasks/1
 $ curl http://localhost:8080/tasks -X POST -H "Content-Type: application/json" -d '{"name": "MyTask", "assigneeUserId": 1}'
 ```
 
-## 使用ツールについて
+## About the tools used in this repository
 
 ### Flyway
 
-Spring Boot の起動または `./gradlew flywayMigrate` コマンドの実行でマイグレーションが実行される。
+Migration by Flyway will be executed when Spring Boot is started or when the `. /gradlew flywayMigrate` command executed.
 
-並列でマイグレーションが実行された場合も適切にロックされる。
+Even when migrations are executed in parallel, they are locked properly.
 
-参考
-* [Can multiple nodes migrate in parallel?](https://flywaydb.org/documentation/faq.html#parallel)
+See: [Can multiple nodes migrate in parallel?](https://flywaydb.org/documentation/faq.html#parallel)
 
 ### SpringFox
 
-Profile local で起動すると以下のエンドポイントで Swagger のドキュメントが取得可能。
+If you start with Profile local, you can get Swagger documentation at the following endpoints.
 
-* JSON ファイル ... http://localhost:8080/v2/api-docs
-* Swagger UI ... http://localhost:8080/swagger-ui.html
+- JSON document ... http://localhost:8080/v2/api-docs
+- Swagger UI ... http://localhost:8080/swagger-ui.html
 
 ### OWASP Dependency Check
 
-ビルド時に依存ライブラリの脆弱性診断が実行される。
+A vulnerability assessment of dependent libraries is performed at build time.
 
-CVSS 7.0 以上の脆弱性が発見された場合にビルドが失敗するよう設定済み。
+The build is configured to fail if a CVSS 7.0 or higher vulnerability is found.
 
 ### Tevern
 
-API の自動テストツール
+Automated API testing tool.
