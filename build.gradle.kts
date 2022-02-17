@@ -15,6 +15,8 @@ group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
+ext["tomcat.version"] = "9.0.58"
+
 repositories {
     mavenCentral()
 }
