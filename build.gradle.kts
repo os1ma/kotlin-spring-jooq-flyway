@@ -4,7 +4,7 @@ val ossIndexUsername = System.getenv("OSS_INDEX_USERNAME")
 val ossIndexPassword = System.getenv("OSS_INDEX_PASSWORD")
 
 plugins {
-    id("org.springframework.boot") version "2.5.12"
+    id("org.springframework.boot") version "2.5.13"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
     id("org.owasp.dependencycheck") version "6.1.6"
     kotlin("jvm") version "1.6.10"
