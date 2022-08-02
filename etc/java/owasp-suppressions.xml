@@ -7,4 +7,11 @@
         ]]></notes>
         <cve>CVE-2018-1258</cve>
     </suppress>
+    <suppress>
+        <notes><![CDATA[
+        see: https://zenn.dev/myonyomu/articles/spring-framework-cve-2016-1000027
+        ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-web@.*$</packageUrl>
+        <cve>CVE-2016-1000027</cve>
+    </suppress>
 </suppressions>

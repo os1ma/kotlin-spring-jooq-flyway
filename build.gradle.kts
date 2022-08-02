@@ -4,9 +4,9 @@ val ossIndexUsername = System.getenv("OSS_INDEX_USERNAME")
 val ossIndexPassword = System.getenv("OSS_INDEX_PASSWORD")
 
 plugins {
-    id("org.springframework.boot") version "2.5.13"
-    id("io.spring.dependency-management") version "1.0.10.RELEASE"
-    id("org.owasp.dependencycheck") version "6.1.6"
+    id("org.springframework.boot") version "2.5.14"
+    id("io.spring.dependency-management") version "1.0.12.RELEASE"
+    id("org.owasp.dependencycheck") version "7.1.1"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
 }
@@ -14,8 +14,6 @@ plugins {
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
-
-ext["tomcat.version"] = "9.0.58"
 
 repositories {
     mavenCentral()
