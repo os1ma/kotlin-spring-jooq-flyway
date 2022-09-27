@@ -44,11 +44,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
-}
 
-// log4j の脆弱性 (CVE-2021-44228) が OWASP Dependency Check のエラーにならないようにするための除外設定
-configurations.all {
-    exclude(group = "org.apache.logging.log4j")
+    // 脆弱性対策
+    implementation("org.yaml:snakeyaml:1.33")
 }
 
 tasks.withType<Test> {
