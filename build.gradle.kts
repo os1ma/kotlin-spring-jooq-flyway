@@ -4,9 +4,9 @@ val ossIndexUsername = System.getenv("OSS_INDEX_USERNAME")
 val ossIndexPassword = System.getenv("OSS_INDEX_PASSWORD")
 
 plugins {
-    id("org.springframework.boot") version "2.5.14"
-    id("io.spring.dependency-management") version "1.0.12.RELEASE"
-    id("org.owasp.dependencycheck") version "7.1.1"
+    id("org.springframework.boot") version "2.6.13"
+    id("io.spring.dependency-management") version "1.1.0"
+    id("org.owasp.dependencycheck") version "7.3.0"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
 }
@@ -31,7 +31,7 @@ dependencies {
     // Database
     runtimeOnly("mysql:mysql-connector-java")
     implementation("org.springframework.boot:spring-boot-starter-jooq")
-    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-core:7.15.0")
 
     // Document
     implementation("io.springfox:springfox-swagger2:2.9.2")
