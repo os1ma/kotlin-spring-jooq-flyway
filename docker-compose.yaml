@@ -2,7 +2,7 @@ version: '3.5'
 services:
 
   app:
-    image: amazoncorretto:8u202
+    image: amazoncorretto:8u352
 
     ports:
       - 8080:8080
@@ -11,7 +11,7 @@ services:
 
     volumes:
       - ${PWD}:/work
-      - /root/.gradle:/root/.gradle
+      - ${PWD}/.gradle:/root/.gradle
     working_dir: /work
 
     command: ./bin/run_locally.sh ${SUB_COMMAND:-develop}
@@ -27,7 +27,8 @@ services:
       MYSQL_PASSWORD: password
 
   mysql:
-    image: mysql:5.7.19
+    image: mysql:5.7.40
+    platform: linux/x86_64
     ports:
       - 3306:3306
     environment:
