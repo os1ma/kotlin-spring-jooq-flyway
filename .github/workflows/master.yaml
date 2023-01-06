@@ -1,0 +1,43 @@
+name: master
+
+on:
+  push:
+    branches:
+    - main
+  schedule:
+    # 日本時間で毎晩 21 時
+    - cron: '0 12 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/cache@v2
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-${{ runner.workflow }}-gradle-${{ hashFiles('**/*.gradle') }}
+        restore-keys: ${{ runner.os }}-${{ runner.workflow }}-gradle
+
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '8'
+        java-package: jdk
+        architecture: x64
+    - run: ./bin/build_on_docker.sh
+
+    - name: Archive reports
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: reports
+        path: ./build/reports/**
+
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      if: ${{ failure() }}
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_MESSAGE: 'BUILD FAILURE'
